@@ -59,11 +59,8 @@
 
 **Hard deadline:** 23 May 2019
 
-## Bare Bones
 
-1. <https://wiki.osdev.org/Bare_Bones>
-
-### Cross-Compiler
+## Cross-Compiler
 
 1. <https://wiki.osdev.org/Target_Triplet>
 2. <https://wiki.osdev.org/Why_do_I_need_a_Cross_Compiler%3F> -- problem description for future, if any is
@@ -71,7 +68,7 @@
     - <http://gcc.gnu.org/install/> -- the latest GNU GCC instruction
 4. <https://wiki.osdev.org/GCC_Cross-Compiler> -- Build Cross-Compiler GCC
 
-#### Bootstrap Target GCC
+### Bootstrap Target GCC
 
 - <http://gcc.gnu.org/install/>
 - <https://wiki.osdev.org/Building_GCC>
@@ -100,7 +97,7 @@
 *Which is built by the buggy **first GCC***
 *Which is built by the **system GCC** from system repository*
 
-#### Dependencies
+### Dependencies
 
 - <https://gcc.gnu.org/install/prerequisites.html>
 - <https://wiki.osdev.org/Building_GCC#Preparing_for_the_build>
@@ -141,7 +138,7 @@ sudo apt-get install build-essential \
                      libisl-dev
 ```
 
-#### Get Sources
+### Get Sources
 
 - <https://gcc.gnu.org/install/download.html>
   - -> <https://gcc.gnu.org/releases.html>
@@ -181,7 +178,7 @@ tar xf binutils-2.32.tar.gz
 tar xf gcc-8.3.0.tar.gz
 ```
 
-#### Build Binutils And GCC
+### Build Binutils And GCC
 
 - <https://wiki.osdev.org/Building_GCC>
 
@@ -227,11 +224,11 @@ sudo apt-get install dejagnu expect tcl
 make -k check
 ```
 
-#### Built Cross-Compiler GCC
+### Built Cross-Compiler GCC
 
 - <https://wiki.osdev.org/GCC_Cross-Compiler>
 
-**Target Triplet:** `i686-suhoy-elf`
+**Target Triplet:** `i686-elf`
 
 Variables:
 
@@ -300,3 +297,10 @@ machine-vendor-operatingsystem
 ```
 
 **Related command:** `gcc -dumpmachine`
+
+## Appendix C. Snippets
+
+```bash
+export PATH="$HOME/bin/gcc-8.3.0-first/bin:$PATH"
+export PATH="$HOME/bin/gcc-8.3.0-i686-elf/bin:$PATH"
+```
