@@ -1,9 +1,32 @@
 {
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/build/**": true
+    },
     "cSpell.words": [
+        "Cloo",
         "Dumplier",
+        "MPFR",
+        "POSIX",
+        "Texinfo",
+        "binutils",
         "bootloader",
+        "dejagnu",
+        "dfsg",
         "dumpmachine",
         "ffreestanding",
-        "rtti"
+        "libgmp",
+        "libisl",
+        "libmpc",
+        "libmpfr",
+        "mkdir",
+        "multilib",
+        "operatingsystem",
+        "rtti",
+        "suhoy",
+        "sysroot",
+        "uname"
     ]
 }
