@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
-        "Dumplier"
+        "Dumplier",
+        "bootloader",
+        "dumpmachine",
+        "ffreestanding",
+        "rtti"
     ]
 }
