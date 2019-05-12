@@ -1,5 +1,10 @@
 # Raspberry Pi 3 & Raspbian Light
 
+## References
+
+- <http://wiringpi.com/> - GPIO Interface library for the Raspberry Pi
+- <https://www.flashrom.org/Flashrom>
+
 ## Raspbian Light Installation
 
 - <https://www.raspberrypi.org/downloads/raspbian/>

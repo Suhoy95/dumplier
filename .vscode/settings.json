@@ -6,8 +6,10 @@
         "**/build/**": true
     },
     "cSpell.words": [
+        "ACPI",
         "CPUS",
         "Cloo",
+        "DIMM",
         "Dumplier",
         "MPFR",
         "Mainboard",
@@ -15,7 +17,9 @@
         "POSIX",
         "QEMU",
         "Raspbian",
+        "SDRAM",
         "Texinfo",
+        "UDIMM",
         "Wextra",
         "binutils",
         "bootloader",
