@@ -35,6 +35,15 @@
 
 ## Basic Reading / Extraction Memory Reading
 
+### ACPI
+
+- <https://wiki.osdev.org/ACPI>
+  - <https://wiki.osdev.org/RSDP>
+  - <https://wiki.osdev.org/RSDT>
+  - <https://wiki.osdev.org/XSDT>
+  - <https://wiki.osdev.org/FADT>
+- <https://wiki.osdev.org/ACPICA> **TODO: read**
+
 1. <https://wiki.osdev.org/PCI>
 2. <https://wiki.osdev.org/Paging>
 
