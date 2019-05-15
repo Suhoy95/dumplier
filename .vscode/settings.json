@@ -46,6 +46,7 @@
         "libncurses",
         "lsblk",
         "mazzar",
+        "memtest",
         "menuconfig",
         "mkdir",
         "mkrescue",
