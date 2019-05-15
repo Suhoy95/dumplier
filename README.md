@@ -3,7 +3,7 @@
 ## My Logs
 
 - [Cross Compiler (followed by OsDev)](./cross-compiler.md)
-- [Bare Bones (OsDev Tutorial)](./bare-bines/README.md)
+- [Bare Bones (OsDev Tutorial)](./bare-bones/README.md)
 - [Set-Up Raspbian](./raspbian/README.md)
 - [Coreboot](./coreboot/README.md)
 

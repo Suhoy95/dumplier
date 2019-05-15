@@ -23,7 +23,7 @@ grub-file --is-x86-multiboot bare-bones.bin
 rm -rf isodir && mkdir -p isodir/boot/grub
 cp bare-bones.bin isodir/boot/bare-bones.bin
 cp grub.cfg isodir/boot/grub/grub.cfg
-# sudo apt-get instal xorriso
+# sudo apt-get install xorriso
 grub-mkrescue -o bare-bones.iso isodir
 ```
 
@@ -39,3 +39,5 @@ qemu-system-i386 -kernel bare-bones.bin
 ```bash
 sudo dd if=bare-bones.iso of=/dev/sdb && sync
 ```
+
+![Welcome to OS development family! Running Bare-Bones on Lenovo ThinkPad X230](./2019-05-15-22:23-lenovo-x230-problem.jpg)
