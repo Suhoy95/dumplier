@@ -1,8 +1,10 @@
 #include "vga-terminal.h"
+#include "stdlib.h"
 #include "strings.h"
 
 /*                         STATIC TYPES AND CONSTANSTS                        */
-enum vga_color {
+enum vga_color
+{
     VGA_COLOR_BLACK = 0,
     VGA_COLOR_BLUE = 1,
     VGA_COLOR_GREEN = 2,
@@ -28,11 +30,12 @@ static const size_t VGA_HEIGHT = 25;
 static size_t vga_terminal_row;
 static size_t vga_terminal_column;
 static uint8_t vga_terminal_color;
-static uint16_t* vga_terminal_buffer;
+static uint16_t *vga_terminal_buffer;
 
 /*                        STATIC FUNCTIONS DECLARATIONS                       */
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
 static inline uint16_t vga_entry(unsigned char uc, uint8_t color);
+static void vga_terminal_writeline(const char *str);
 static void vga_terminal_putchar(char c);
 
 /*                              EXPORT FUNCTIONS                              */
@@ -47,20 +50,54 @@ void vga_terminal_initialize(void)
      *                                                          - John Nunemaker
      */
     vga_terminal_color = vga_entry_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLACK);
-    vga_terminal_buffer = (uint16_t*) 0xB8000;
-    for (size_t y = 0; y < VGA_HEIGHT; y++) {
-        for (size_t x = 0; x < VGA_WIDTH; x++) {
+    vga_terminal_buffer = (uint16_t *)0xB8000;
+    for (size_t y = 0; y < VGA_HEIGHT; y++)
+    {
+        for (size_t x = 0; x < VGA_WIDTH; x++)
+        {
             const size_t index = y * VGA_WIDTH + x;
             vga_terminal_buffer[index] = vga_entry(' ', vga_terminal_color);
         }
     }
 }
 
-void vga_terminal_writestring(const char* str)
+void vga_terminal_printf(const char *str, ...)
 {
+    int d;
+    char *s;
+
+    char number_buffer[40];
+
     size_t data_len = strlen(str);
+    va_list args;
+    va_start(args, str);
+
     for (size_t i = 0; i < data_len; i++)
+    {
+        if (str[i] == '%' && i + 1 < data_len)
+        {
+            switch (str[i + 1])
+            {
+            case 'd':
+                d = va_arg(args, int);
+                itoa(d, number_buffer, 10);
+                vga_terminal_writeline(number_buffer);
+                ++i;
+                break;
+            case 's':
+                s = va_arg(args, char *);
+                vga_terminal_writeline(s);
+                ++i;
+                break;
+            default:
+                vga_terminal_putchar(str[i]);
+                break;
+            }
+            continue;
+        }
         vga_terminal_putchar(str[i]);
+    }
+    va_end(args);
 }
 
 /*                              STATIC FUNCTIONS                              */
@@ -71,16 +108,27 @@ static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg)
 
 static inline uint16_t vga_entry(unsigned char uc, uint8_t color)
 {
-    return (uint16_t) uc | (uint16_t) color << 8;
+    return (uint16_t)uc | (uint16_t)color << 8;
+}
+
+static void vga_terminal_writeline(const char *str)
+{
+    size_t str_len = strlen(str);
+    for (size_t i = 0; i < str_len; i++)
+    {
+        vga_terminal_putchar(str[i]);
+    }
 }
 
 static void vga_terminal_putchar(char c)
 {
-    if (c == '\n') {
+    if (c == '\n')
+    {
         ++vga_terminal_row;
         vga_terminal_column = 0;
 
-        if (vga_terminal_row == VGA_HEIGHT) {
+        if (vga_terminal_row == VGA_HEIGHT)
+        {
             vga_terminal_row = 0;
         }
         return;
@@ -89,10 +137,12 @@ static void vga_terminal_putchar(char c)
     const size_t index = vga_terminal_row * VGA_WIDTH + vga_terminal_column;
     vga_terminal_buffer[index] = vga_entry(c, vga_terminal_color);
 
-    if (++vga_terminal_column == VGA_WIDTH) {
+    if (++vga_terminal_column == VGA_WIDTH)
+    {
         vga_terminal_column = 0;
 
-        if (++vga_terminal_row == VGA_HEIGHT) {
+        if (++vga_terminal_row == VGA_HEIGHT)
+        {
             vga_terminal_row = 0;
         }
     }

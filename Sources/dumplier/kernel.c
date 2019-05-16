@@ -6,7 +6,7 @@ void kernel_main(void)
 {
     vga_terminal_initialize();
 
-    while (true) {
-        printf("Hello, kernel World!\n");
+    for (size_t i = 0; i < 30; i++) {
+        printf("Hello %d, kernel %s!\n", i, "World");
     }
 }

@@ -4,6 +4,6 @@
 #include "config.h"
 #include "vga-terminal.h"
 
-#define printf vga_terminal_writestring
+#define printf vga_terminal_printf
 
 #endif // _STDIO_H
