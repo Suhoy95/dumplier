@@ -7,5 +7,11 @@ studying documentation.
 
 - `dumplier/` - my tiny kernel from [OS-dev Bare-Bones](../bare-bones/README.md).
 But it seems to take ages to finish it;
-- `memtest86+-scraper` - little hack to try to make the 64bit scrapper from
-[memtest86+](https://www.memtest.org/).
+
+## TODO
+
+- <https://wiki.osdev.org/User:TheCool1Kevin/VSCode_Debug> - set up VSCode
+- <https://wiki.osdev.org/Bare_Bones> - make pretty output functions
+- <https://wiki.osdev.org/Setting_Up_Paging> - set UP paging
+- <https://wiki.osdev.org/Setting_Up_Paging_With_PAE> - set up PAE
+- write it to USB drive
