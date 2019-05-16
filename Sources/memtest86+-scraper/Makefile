@@ -9,19 +9,24 @@
 #
 FDISK=/dev/fd0
 
-AS=as -32
-CC=gcc
+# AS=as -32
+# CC=gcc
+AS=~/bin/gcc-8.3.0-i686-elf/bin/i686-elf-as
+CC=~/bin/gcc-8.3.0-i686-elf/bin/i686-elf-gcc
+LD=~/bin/gcc-8.3.0-i686-elf/bin/i686-elf-ld
 
 CFLAGS= -Wall -march=i686 -m32 -O1 -fomit-frame-pointer -fno-builtin \
 	-ffreestanding -fPIC $(SMP_FL) -fno-stack-protector
 
-OBJS= head.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o \
-      config.o cpuid.o linuxbios.o pci.o memsize.o spd.o error.o dmi.o controller.o \
+OBJS= head.o reloc.o main.o patn.o screen_buffer.o \
+      config.o cpuid.o linuxbios.o memsize.o error.o dmi.o controller.o \
       smp.o vmem.o random.o
 
+# OBJS+= test.o init.o lib.o pci.o spd.o
+OBJS+= monster.o
 
 all: clean memtest.bin memtest
-		 scp memtest.bin root@192.168.0.12:/srv/tftp/mt86plus
+	#  scp memtest.bin root@192.168.0.12:/srv/tftp/mt86plus
 
 # Link it statically once so I know I don't have undefined
 # symbols and then link it dynamically so I have full
@@ -56,6 +61,13 @@ reloc.o: reloc.c
 test.o: test.c
 	$(CC) -c -Wall -march=i686 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding test.c
 
+# dirty hack to avoid multiple definition of __inX functions
+monster.c: init.c lib.c pci.c spd.c test.c
+	cat $^ > $@
+
+monster.o: monster.c
+	$(CC) -c -Wall -march=i686 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding $^
+
 random.o: random.c
 	$(CC) -c -Wall -march=i686 -m32 -O3 -fomit-frame-pointer -fno-builtin -ffreestanding random.c
 
@@ -65,7 +77,7 @@ build_number:
 
 clean:
 	rm -f *.o *.s *.iso memtest.bin memtest memtest_shared \
-		memtest_shared.bin memtest.iso
+		memtest_shared.bin memtest.iso monster.c
 
 iso:
 	make all

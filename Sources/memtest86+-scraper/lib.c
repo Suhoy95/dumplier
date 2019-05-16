@@ -33,12 +33,12 @@ struct ascii_map_str {
         int keycode;
 };
 
-inline void reboot(void)
+void reboot(void)
 {
-	
+
 	/* tell the BIOS to do a cold start */
 	*((unsigned short *)0x472) = 0x0;
-	
+
 	while(1)
 	{
 		outb(0xFE, 0x64);
@@ -58,20 +58,24 @@ int strstr(char *haystack, char * needle)
 {
 	int i=0,j=0;
 	int here=0;
+
+	int len_needle = strlen(needle);
+	int len_haystack = strlen(haystack);
 	while(1){
 		if(needle[i]==haystack[j])
 		{
-			if(here==0)
+			if(here==0) {
 				here=j;
-				i++;j++;
-				if(i>=strlen(needle))
-				{
-					return here;
-				}
-				if(j>=strlen(haystack))
-				{
-					return -1;
-				}
+			}
+			i++;j++;
+			if(i>=len_needle)
+			{
+				return here;
+			}
+			if(j>=len_haystack)
+			{
+				return -1;
+			}
 		} else {
 			j++;i=0;here=0;
 		}
@@ -171,7 +175,7 @@ unsigned long simple_strtoul(const char *cp, char **endp, unsigned int base) {
  * Scroll the error message area of the screen as needed
  * Starts at line LINE_SCROLL and ends at line 23
  */
-void scroll(void) 
+void scroll(void)
 {
 	int i, j;
 	char *s, tmp;
@@ -245,7 +249,7 @@ void cprint(int y, int x, const char *text)
         tty_print_line(y, x, text);
 }
 
-void itoa(char s[], int n) 
+void itoa(char s[], int n)
 {
   int i, sign;
 
@@ -284,7 +288,7 @@ void memcpy (void *dst, void *src, int len)
 	}
 	for (i = 0 ; i < len; i++) {
 		*d++ = *s++;
-	} 
+	}
 }
 
 /*
@@ -351,7 +355,7 @@ void dprint(int y, int x, ulong val, int len, int right)
 					continue;
 				}
 				if (k == 0 && flag == 0) {
-					continue;				
+					continue;
 				}
 				buf[i++] = k + '0';
 				val -= k * j;
@@ -497,7 +501,7 @@ struct eregs {
 	ulong cs;
 	ulong eflag;
 };
-	
+
 /* Handle an interrupt */
 void inter(struct eregs *trap_regs)
 {
@@ -588,11 +592,11 @@ void inter(struct eregs *trap_regs)
 	}
 }
 
-void set_cache(int val) 
+void set_cache(int val)
 {
 	switch(val) {
 	case 0:
-		cache_off();	
+		cache_off();
 		break;
 	case 1:
 		cache_on();
@@ -629,7 +633,7 @@ void check_input(void)
 
 	if ((c = get_key())) {
 		switch(c & 0x7f) {
-		case 1:	
+		case 1:
 			/* "ESC" key was pressed, bail out.  */
 			cprint(LINE_RANGE, COL_MID+23, "Halting... ");
 			reboot();
@@ -680,7 +684,7 @@ ulong getval(int x, int y, int result_shift)
 		buf[i] = ' ';
 	}
 	buf[sizeof(buf)/sizeof(buf[0]) -1] = '\0';
-	
+
 	wait_keyup();
 	done = 0;
 	n = 0;
@@ -734,7 +738,7 @@ ulong getval(int x, int y, int result_shift)
 		}
 		/* Don't allow anything to be entered after a suffix */
 		if (n > 0 && (
-			(buf[n-1] == 'p') || (buf[n-1] == 'g') || 
+			(buf[n-1] == 'p') || (buf[n-1] == 'g') ||
 			(buf[n-1] == 'm') || (buf[n-1] == 'k'))) {
 			buf[n] = ' ';
 		}
@@ -788,7 +792,7 @@ void ttyprint(int y, int x, const char *p)
 {
 	static char sx[3];
 	static char sy[3];
-	
+
 	sx[0]='\0';
 	sy[0]='\0';
 	x++; y++;
@@ -805,7 +809,7 @@ void ttyprint(int y, int x, const char *p)
 void serial_echo_init(void)
 {
 	int comstat, hi, lo, serial_div;
-	unsigned char lcr;	
+	unsigned char lcr;
 
 	/* read the Divisor Latch */
 	comstat = serial_echo_inb(UART_LCR);
@@ -841,7 +845,7 @@ int getnum(ulong val)
 {
 	int len = 0;
 	int i = 1;
-	
+
 	while(i <= val)
 	{
 		len++;
@@ -849,7 +853,7 @@ int getnum(ulong val)
 	}
 
 	return len;
-		
+
 }
 
 
@@ -881,7 +885,7 @@ void serial_echo_print(const char *p)
  */
 struct ascii_map_str ser_map[] =
 /*ascii keycode     ascii  keycode*/
-{ 
+{
   /* Special cases come first so I can leave
    * their ``normal'' mapping in the table,
    * without it being activated.
