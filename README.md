@@ -8,6 +8,7 @@
 - [Bare Bones (OsDev Tutorial)](./bare-bones/README.md)
 - [Set-Up Raspbian](./raspbian/README.md)
 - [Coreboot](./coreboot/README.md)
+- [LFS](./lfs/README.md)
 
 ## RTFM
 

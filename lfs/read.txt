@@ -1,0 +1,9 @@
+http://www.linuxfromscratch.org/hints/downloads/files/time.txt
+http://www.tldp.org/HOWTO/HOWTO-INDEX/other-lang.html
+http://www.linuxfromscratch.org/blfs/view/8.4/introduction/locale-issues.html
+
+http://www.linuxfromscratch.org/hints/downloads/files/kernel-configuration.txt
+http://www.kroah.com/lkn/
+
+http://www.linuxfromscratch.org/blfs/view/8.4/longindex.html#kernel-config-index
+http://www.linuxfromscratch.org/hints/downloads/files/lfs-uefi.txt
