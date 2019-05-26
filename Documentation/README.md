@@ -279,8 +279,8 @@ accurate. It requires a Printed Circuit Board (PCB), that increase the time of
 development, so be patient.
 2. The work can be facilitated by obtaining the appropriate FPGA board, such
 as [NanoBoard 3000 Series](https://techdocs.altium.com/display/HWARE/NanoBoard+3000+Series).
-But it would be great to find a board with mounted DDR2/3/4 slots. This board is expensive,
-so it would be better to borrow it from known laboratories.
+But it would be great to find a board with mounted DDR2/3/4 slots. This board is
+expensive, so it would be better to borrow it from known laboratories.
 
 ### Useful resources
 
@@ -288,7 +288,7 @@ so it would be better to borrow it from known laboratories.
 -- good simple example of this work. But we are interesting not only SPD.
 - Find the DataSheet according the serial number. For example: `HX424C15FB2K2/16`
 -- <https://www.kingston.com/dataSheets/HX424C15FB2K2_16.pdf>
-- The Trade-Mark site contains a good descritption and explanation of the
+- The Trade-Mark site contains a good description and explanation of the
 RAM properties: <https://www.hyperxgaming.com/en/memory/fury-ddr4>
 - <https://www.hyperxgaming.com/en/decoder> -- calculator to decode serial number
 meaning.
@@ -302,13 +302,71 @@ standard.
 
 ## BIOS-based solutions
 
+**Advantages:** You still may control the writing to the RAM during boot.
+
+**Possible difficulties:**
+
+1. The engineering skill is required. You can easily brick your device, but
+with patience and reading manual it is possible to overcome.
+2. Find appropriate motherboard with target RAM slots, and memory chip to
+reprogram it.
+
+### Useful links
+
+- **TODO:** Look at products certified by "Respect Your Freedom":
+<https://www.fsf.org/resources/hw/endorsement/respects-your-freedom>
+
 ### u-boot
 
+- <http://www.denx.de/wiki/DULG/WebHome>
+- <https://github.com/u-boot/u-boot>
+
+The U-Boot provides a bootloader for Embedded PowerPC, ARM and MIPS Systems.
+
+- It has memory display command: <http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.5.>
+-- it could be base for dumping RAM utility.
+
+- **TODO:** find an appropriate motherboard with DDR slots.
+
 ### coreboot
+
+- <https://coreboot.org/>
+- <https://doc.coreboot.org/>
+- <https://www.flashrom.org/Flashrom> -- **TODO:** explore utility to reprogram
+BIOS flash chip. *Note:* Raspberry Pi with SOIC-8 clips could be used as
+programming device
+- **TODO:** coreboot compatible motherboard
+- **TODO:** program coreboot payload for dumping RAM memory.
 
 ## OS-based solutions
 
 ### Mini-kernel
+
+This way is described in
+[Lest We Remember (2008)](https://citp.princeton.edu/research/memory/) work.
+The available sources require fixing. But it requires low-level
+understanding the x86 works. The [OSDev.org](https://wiki.osdev.org/Main_Page)
+could help with that. But it also requires additional time for a basic example.
+
+The current state: <https://github.com/Suhoy95/dumplier/tree/master/Sources>
+
+**TODO: The approximate plan.**
+
+- Learn how to obtain and print information about hardware configuration. Particularly,
+CPU capabilities and limit pf available physical RAM.
+- Learn work with segmentation: GDT, LDT and interrupts (
+[GDT tutorial](https://wiki.osdev.org/GDT_Tutorial),
+[GDT](https://wiki.osdev.org/GDT),
+[LDT](https://wiki.osdev.org/LDT),
+[Interrupt Service Routines](https://wiki.osdev.org/Interrupt_Service_Routines)).
+- Learn how to switch from Real mode to Protected mode and vice versa. It is
+required to not pull USB driver into the mini kernel, but using BIOS functions
+([Real Mode](https://wiki.osdev.org/Real_Mode),
+[Protected Mode](https://wiki.osdev.org/Protected_Mode)).
+- Learn how to use BIOS functions ([BIOS](https://wiki.osdev.org/BIOS))
+- Learn how to configure paging and PAE. (
+[Setting Up Paging](https://wiki.osdev.org/Setting_Up_Paging),
+[Setting Up Paging With PAE](https://wiki.osdev.org/Setting_Up_Paging_With_PAE))
 
 ### Patching GRUB
 

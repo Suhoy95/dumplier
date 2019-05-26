@@ -80,6 +80,7 @@
         "Readline",
         "SDRAM",
         "SETFCAP",
+        "SOIC",
         "STALIBNAME",
         "STARTFILE",
         "Salave",
