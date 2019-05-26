@@ -1,5 +1,7 @@
 # Preface
 
+**GitHub repository:** <https://github.com/Suhoy95/dumplier>
+
 **Q:** *Know what the difference between your latest project and
 putting wings on an elephant is?*\
 **A:** *Who knows? The elephant \*might\* fly, heh, heh...*\
@@ -369,6 +371,10 @@ required to not pull USB driver into the mini kernel, but using BIOS functions
 [Setting Up Paging With PAE](https://wiki.osdev.org/Setting_Up_Paging_With_PAE))
 
 ### Patching GRUB
+
+This method was not considered during this work. But understanding the modular
+GRUB source structure could allow loading only appropriate USB driver and
+create required GRUB command to dump RAM content.
 
 ### Custom Linux Kernel
 
