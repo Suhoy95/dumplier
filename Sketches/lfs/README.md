@@ -12,6 +12,9 @@ Plan outline:
 dd if=/dev/mem of=/dev/sdbX
 ```
 
+*Note:* plan has not been done yet. Bur it was glory Linux building in
+one continuos day from Friday 17 May to Saturday 18 May.
+
 ## Refresh Knowledge links
 
 - <http://www.tldp.org/HOWTO/Software-Building-HOWTO.html> --
