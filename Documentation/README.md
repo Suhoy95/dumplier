@@ -255,7 +255,50 @@ during boot](./images/Hard-2.jpg)
 
 # Building Memory Scrapper
 
+The most time of research was dedicated to understanding how to create the system
+to dump the RAM content. Generally, it may be split into three parts:
+Hardware solution, BIOS-based solutions, and OS-based solutions.
+
+**Big advice: each of this way is challenging engineering and/or programming work.
+Even one of them may easily occupy more than one month. So try to concentrate
+on the one and NOT SWITCH to another until you find strong reasons to
+not continue chosen way.*We guess it requires by RAM manufacturers.*
+
 ## Hardware-based solutions
+
+**Advantages:** the method may be clear and simple from engendering point of view.
+You will not fight against BIOS and other software baggage. Just simple controlling
+of the parallel bus interface.
+
+**Possible difficulties:**
+
+1. If the DDR memory works only on high frequency, and it
+is not possible to read it on low frequency, then you will fight with physics:
+to correctly read from the parallel interface the length of wires should be very
+accurate. It requires a Printed Circuit Board (PCB), that increase the time of
+development, so be patient.
+2. The work can be facilitated by obtaining the appropriate FPGA board, such
+as [NanoBoard 3000 Series](https://techdocs.altium.com/display/HWARE/NanoBoard+3000+Series).
+But it would be great to find a board with mounted DDR2/3/4 slots. This board is expensive,
+so it would be better to borrow it from known laboratories.
+
+### Useful resources
+
+- <https://xdevs.com/a/ddr4s/> -- DDR DIMM SPD Adapter for Raspberry Pi
+-- good simple example of this work. But we are interesting not only SPD.
+- Find the DataSheet according the serial number. For example: `HX424C15FB2K2/16`
+-- <https://www.kingston.com/dataSheets/HX424C15FB2K2_16.pdf>
+- The Trade-Mark site contains a good descritption and explanation of the
+RAM properties: <https://www.hyperxgaming.com/en/memory/fury-ddr4>
+- <https://www.hyperxgaming.com/en/decoder> -- calculator to decode serial number
+meaning.
+- <https://www.jedec.org/standards-documents/docs/jesd79-4a>
+-- DDR4 SDRAM STANDARD -- We guess it requires by RAM manufacturers
+- DDR4 SDRAM UDIMM Design Specification -- this specification helps to understand
+the physical configuration of device.
+
+*Note:* <https://www.jedec.org/workshops-2019> -- the world is preparing for DDR5
+standard.
 
 ## BIOS-based solutions
 
