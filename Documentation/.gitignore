@@ -1,1 +1,4 @@
+scripts/coldboot-attacks/bios_memimage/
 references/DRAM/
+
+./*.pdf
