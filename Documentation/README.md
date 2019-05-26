@@ -107,15 +107,43 @@ bureaucracy organizations.
 
 # Experiments
 
+## Halderman's experiment
+
+- <https://citp.princeton.edu/research/memory/exp/>
+
+```python
+#!/usr/bin/env python
+# a pirate's favorite chemical element
+a = ""
+while 1: a += "ARGON"
+```
+
+- Run and wait for Disk Activity, which means swap has come in play
+- Cutting-off Hard Reset
+- Run Linux And Find **ARGON** pattern in memory
+
+```bash
+sudo strings /dev/mem | less
+```
+
+**Result:** current default Linux kernel does not allow read more than 1MiB
+of RAM. In the NetBSD reading from `/dev/mem` leads to rebooting system. Thus,
+it is required to understand the underlying mapping structure of RAM memory to
+work with that way now.
+
+\clearpage
+
 ## Breaking BitLocker in VirtualBox
 
-- Download image of Windows 10 from: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines>
+*Note:* Building of published tools are placed in the Appendix
+
+- Download image of Windows 10 from <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines>
 - Shrink Disk Space, and Increase performance (RAM, CPU) of VM
 - Allow Policy to run BitLocker without TPM: <https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/>
 - Enable BitLocker encryption
 - Reboot and wait for finishing BitLocker progress (PowerShell or GUI):
 
-```powershell
+```PowerShell
 watch(1) {manage-bde -status c:; sleep 2} # admin right required
 ```
 
@@ -161,11 +189,16 @@ sudo mount -t ntfs -o ro /mnt/bde1 /media
 sudo umount /media/mount && sudo umount /media/bitlocker
 ```
 
-![`aeskeyfind` works!](./images/2019-05-14-12:18:35-mount-with-aes-keys.png)
+![`aeskeyfind` works](./images/2019-05-14-12:18:35-mount-with-aes-keys.png)
 
 ## Further VM experiments
 
+- test different types of BitLocker configuration
+- test the `rsakeyfind` utility
+
 ## Dumping Memory from Hardware
+
+
 
 # Building Memory Scrapper
 
@@ -211,3 +244,125 @@ Doubleday, New York, NY, USA.
 https://www.semanticscholar.org/paper/Memory-forensics%3A-The-path-forward-Case-Richard/b358feb9c8f2704aa742ff69ab04d04766468146
 3. TODO: add more, request for help
 -->
+
+# Appendix
+
+## A. Building tools from Cold-Boot Attack
+
+### Signature Verification
+
+```bash
+$ gpg --receive-keys B8841A919D0FACE4
+gpg: key B8841A919D0FACE4: 68 signatures not checked due to missing keys
+gpg: key B8841A919D0FACE4: public key "Jacob Appelbaum <jacob@appelbaum.net>" imported
+```
+
+```bash
+$ gpg --verify bios_memimage-1.2.tar.gz.asc
+gpg: assuming signed data in 'bios_memimage-1.2.tar.gz'
+gpg: Signature made Чт 12 фев 2009 16:50:39 MSK
+gpg:                using DSA key B8841A919D0FACE4
+gpg: Good signature from "Jacob Appelbaum <jacob@appelbaum.net>" [expired]
+gpg: Note: This key has expired!
+Primary key fingerprint: 12E4 04FF D3C9 31F9 3405  2D06 B884 1A91 9D0F ACE4
+```
+
+```bash
+$ gpg --verify efi_memimage-1.0.tar.gz.asc
+gpg: assuming signed data in 'efi_memimage-1.0.tar.gz'
+gpg: Signature made Пт 18 июл 2008 21:51:53 MSD
+gpg:                using DSA key B8841A919D0FACE4
+gpg: Good signature from "Jacob Appelbaum <jacob@appelbaum.net>" [expired]
+gpg: Note: This key has expired!
+Primary key fingerprint: 12E4 04FF D3C9 31F9 3405  2D06 B884 1A91 9D0F ACE4
+```
+
+```bash
+$ gpg --verify aeskeyfind-1.0.tar.gz.asc
+gpg: assuming signed data in 'aeskeyfind-1.0.tar.gz'
+gpg: Signature made Пт 18 июл 2008 21:52:04 MSD
+gpg:                using DSA key B8841A919D0FACE4
+gpg: Good signature from "Jacob Appelbaum <jacob@appelbaum.net>" [expired]
+gpg: Note: This key has expired!
+Primary key fingerprint: 12E4 04FF D3C9 31F9 3405  2D06 B884 1A91 9D0F ACE4
+```
+
+```bash
+$ gpg --verify rsakeyfind-1.0.tar.gz.asc
+gpg: assuming signed data in 'rsakeyfind-1.0.tar.gz'
+gpg: Signature made Пт 18 июл 2008 21:51:48 MSD
+gpg:                using DSA key B8841A919D0FACE4
+gpg: Good signature from "Jacob Appelbaum <jacob@appelbaum.net>" [expired]
+gpg: Note: This key has expired!
+Primary key fingerprint: 12E4 04FF D3C9 31F9 3405  2D06 B884 1A91 9D0F ACE4
+```
+
+```bash
+$ gpg --verify aesfix-1.0.1.tar.gz.asc
+gpg: assuming signed data in 'aesfix-1.0.1.tar.gz'
+gpg: Signature made Пт 18 июл 2008 21:52:09 MSD
+gpg:                using DSA key B8841A919D0FACE4
+gpg: Good signature from "Jacob Appelbaum <jacob@appelbaum.net>" [expired]
+gpg: Note: This key has expired!
+Primary key fingerprint: 12E4 04FF D3C9 31F9 3405  2D06 B884 1A91 9D0F ACE4
+```
+
+### bios_memimage-1.2.tar.gz
+
+*Note:* project initially was written for 32bit systems and x86_64 was not tested
+much, but should work. Currently, we are interested in x86_64.
+
+- build x86_64 compiler. *Note:* host x86_64 compiler should be enough.
+
+```text
+# mk.64
+# ...
+CC=/home/suhoy/bin/gcc-8.3.0-x86_64-elf/bin/x86_64-elf-gcc
+AR=/home/suhoy/bin/gcc-8.3.0-x86_64-elf/bin/x86_64-elf-ar
+AS=/home/suhoy/bin/gcc-8.3.0-x86_64-elf/bin/x86_64-elf-as
+AS=/home/suhoy/bin/gcc-8.3.0-x86_64-elf/bin/x86_64-elf-ld
+OBJCOPY=/home/suhoy/bin/gcc-8.3.0-x86_64-elf/bin/x86_64-elf-objcopy
+```
+
+```bash
+source mk.64
+make -f Makefile.64
+
+cp pxe/scraper.bin ./bin/pxe_scraper.bin
+cp usb/scraper.bin ./bin/usb_scraper.bin
+cp pxedump/pxedump ./bin/
+cp usbdump/usbdump ./bin/
+```
+
+### efi_memimage-1.2.tar.gz
+
+- exist for old 32bit EFI application. We do not consider this tool
+
+### aeskeyfind-1.0.tar.gz
+
+```bash
+make
+cp aeskeyfind ../bin
+```
+
+### rsakeyfind-1.0.tar.gz
+
+- Patch headers to use undeclared standard functions:
+
+```C
+// rsakeyfind.cpp
+#include <string.h>
+#include <unistd.h>
+```
+
+```bash
+make
+cp rsakeyfind ../bin
+```
+
+### aesfix-1.0.1.tar.gz.asc
+
+```bash
+make
+cp aesfix ../bin
+```
