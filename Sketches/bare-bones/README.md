@@ -41,3 +41,6 @@ sudo dd if=bare-bones.iso of=/dev/sdb && sync
 ```
 
 ![Welcome to OS development family! Running Bare-Bones on Lenovo ThinkPad X230](./2019-05-15-22:23-lenovo-x230-problem.jpg)
+
+*Note:* After manipulation with `grub` utilities, it is possible to run Bare Bones
+on ThinkPad x230, so RTFM.
