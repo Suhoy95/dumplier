@@ -205,9 +205,9 @@ Doubleday, New York, NY, USA.
 <!--
 3. USB -- Undermining Security Barriers, Andy Davis, `references/BH_US_11-Davis_USB_WP.pdf`
 4. Salave, P. (2017). Memory Forensics : Tools Comparison.
--- <https://pdfs.semanticscholar.org/791c/c8805bc1e02192a96e211b7daf6e8cf2799e.pdf>
+-- https://pdfs.semanticscholar.org/791c/c8805bc1e02192a96e211b7daf6e8cf2799e.pdf
 -- `references/memory-forensics-tools-comparison.pdf`
 5.
-<https://www.semanticscholar.org/paper/Memory-forensics%3A-The-path-forward-Case-Richard/b358feb9c8f2704aa742ff69ab04d04766468146>
+https://www.semanticscholar.org/paper/Memory-forensics%3A-The-path-forward-Case-Richard/b358feb9c8f2704aa742ff69ab04d04766468146
 3. TODO: add more, request for help
 -->
