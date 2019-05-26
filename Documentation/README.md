@@ -120,22 +120,6 @@ from locked computer
 - Try to build Coreboot\footnote{<https://www.coreboot.org/>},
 flash it into motherboard and consider it as pure-hardware data acquisition solution
 
-### Offensive Technology Research Project
-
-**Goal:** Implement any attack with using USB and/or DMA technologies.
-Particularly, try to apply it to RAM imaging task.
-
-**Targets:**
-
-- Explore possibility of using DMA and USB features in RAM imaging perspective
-- Implement and Perform ANY hardware attack relating with USB and/or DMA:
-    - BadUSB\footnote{<https://ru.wikipedia.org/wiki/BadUSB>}
-    - Attack with PCILeech\footnote{<https://github.com/ufrisk/pcileech>}
-    - Use Arduino boards as BadUSB
-    - Physically combine USB-flash and keyboard controllers ot obtain BadUSB
-    - Implement utility to image RAM memory via Hot-Boot attack
-    - Try to repeat experiment with IEEE 1379, and consider it as RAM imaging solution
-
 ## Novelty
 
 Citing the Witherden [[2, 20010]](https://freddie.witherden.org/pages/ieee-1394-forensics.pdf),
@@ -264,34 +248,6 @@ corresponds to OT and CCF project.
 
 ## Cold-Boot Attack Extraction
 
-## IEEE 1379 or FireWire Extraction
-
-## DMA Attacks
-
-- <https://github.com/ufrisk/pcileech> -- main repository about the attack.
-- <https://github.com/ufrisk/pcileech-fpga>
--- the same attack, but for FGPA hardware.
-- <https://www.synacktiv.com/posts/pentest/practical-dma-attack-on-windows-10.html>
--- attack description with PCILeech
-- <https://mirror.us.oneandone.net/projects/media.ccc.de/congress/2017/slides-pdf/34c3-9111-public_fpga_based_dma_attacking.pdf>
--- slides how it should look like
-- <https://www.blackhat.com/docs/us-17/wednesday/us-17-Trikalinou-Taking-DMA-Attacks-To-The-Next-Level-How-To-Do-Arbitrary-Memory-Reads-Writes-In-A-Live-And-Unmodified-System-Using-A-Rogue-Memory-Controller.pdf>
--- DMA with technical details about RAM structure
-- <https://n0where.net/direct-memory-access-attack-pcileech>
--- Author's article (?)
-- <http://blog.frizk.net/2016/10/dma-attacking-over-usb-c-and.html>
--- attack on Thunderbolt3 (the same author)
-- <https://www.digikey.com/en/product-highlight/f/ftdi/ft60x-series-usb>
--- details about FT601 and boards based on that
-- <http://www.bplus.com.tw/PLX.html> -- supposedly board manufacturer with USB3380
-- <https://security.stackexchange.com/questions/118854/attacks-via-physical-access-to-usb-dma>
--- attack vectors
-- <https://en.m.wikipedia.org/wiki/DMA_attack> -- about DMA
-
-## USB Attacks
-
-## USB & DMA Extraction
-
 # Summary
 
 # References
@@ -309,121 +265,12 @@ In P. C. van Oorschot (ed.), USENIX Security Symposium (p./pp. 45-60),
 3. Steven Levy. 1984. Hackers: Heroes of the Computer Revolution.
 Doubleday, New York, NY, USA.
 
-<!-- 3. USB -- Undermining Security Barriers, Andy Davis, `references/BH_US_11-Davis_USB_WP.pdf`
+<!--
+3. USB -- Undermining Security Barriers, Andy Davis, `references/BH_US_11-Davis_USB_WP.pdf`
 4. Salave, P. (2017). Memory Forensics : Tools Comparison.
 -- <https://pdfs.semanticscholar.org/791c/c8805bc1e02192a96e211b7daf6e8cf2799e.pdf>
 -- `references/memory-forensics-tools-comparison.pdf`
 5.
 <https://www.semanticscholar.org/paper/Memory-forensics%3A-The-path-forward-Case-Richard/b358feb9c8f2704aa742ff69ab04d04766468146>
-3. TODO: add more, request for help -->
-
-# Appendix A. OT Research Project
-
-## Team members
-
-- Ilya Sukhoplyuev, <i.sukhoplyuev@innopolis.university>, master of SNE,
-Innopolis University
-- Andrey Serebryakov, <an.serebryakov@innopolis.ru>, master of SNE,
-Innopolis University
-
-## Goal and Targets
-
-**Goal:** Implement any attack with using USB and/or DMA technologies.
-Particularly, try to apply it to RAM imaging task.
-
-**Common targets with CCF RP:**
-
-- Get insights about art of writing operating systems\footnote{<https://wiki.osdev.org/Main\_Page>}
-- Understand and practically face with `x86` architecture as most wide-spread
-and technologies related with address spaces
-
-**Targets:**
-
-- Explore possibility of using DMA and USB features in RAM imaging perspective
-- Implement and Perform ANY hardware attack relating with USB and/or DMA:
-    - BadUSB\footnote{<https://ru.wikipedia.org/wiki/BadUSB>}
-    - Attack with PCILeech\footnote{<https://github.com/ufrisk/pcileech>}
-    - Use Arduino boards as BadUSB
-    - Physically combine USB-flash and keyboard controllers ot obtain BadUSB
-    - Implement utility to image RAM memory via Hot-Boot attack
-    - Try to repeat experiment with IEEE 1379, and consider it as RAM imaging solution
-
-## Team Collaboration & Members Contribution
-
-According to the current situation, Ilya Sukhoplyuev are mostly performing
-the theoretical and academical research in the field and writing the report
-draft and/or logging the obtained knowledge.
-
-Andrey Serebryakov are working on researching the practical resource and methods
-to perform attacks with USB or DMA.
-
-## Time Schedule
-
-| Week № | Time deadlines / Date | Action                            |
-|--------|------------------|----------------------------------------|
-| 1 | 29 April - 5 May 2019 | Theoretical investigations             |
-| 1 | 29 April - 5 May 2019 | Writing logs                           |
-| 2 | 6 - 12 May 2019       | Resource investigations                |
-| 2 | 6 - 12 May 2019       | Performing the existing attacks        |
-| 3 | 13 - 19 May 2019      | Implementation of self-defined attacks |
-| 4 | 20 - 26 May           | Presentation preparation               |
-| 4 | 20 - 26 May           | Reviewing and finalizing the report    |
-
-\color{red}\textbf{Deadlines}\color{black}:
-
-- 18 May 2019 -- Minimal working attack samples, without report -- soft deadline
-- 25 May 2019 -- OT Research Project presentation
-- 26 May 2019 -- OT Research Project report deadline -- hard deadline
-
-**Notes:**
-
-- The 18-19 May will be dedicated to urban hackaton\footnote{<https://vk.com/urbathon2019>},
- the minimal research version should be done by this date
-- The tasks of 1-2 weeks may be performing till report finalization depending
-on situation
-
-\clearpage
-
-## Resource Requirements
-
-The project requires the hardware, our budget is approximately estimated
-with **10 000 rubles**.
-
-Currently we are searching for next hardware:
-
-- The research shows that USB 3.1 has DMA addition potentially the similar
-flaw as IEEE 1379. We have found that boards with *USB3380* и *FT601* chips are required.
-But we can not find them in the market to retrieve them in acceptable time span.
-For examples:
-    - *USB3380-EVB mini-PCIe card* (USB3380)
-    - *Xilinx SP605 + UMFT601X-B* (FT601)
-- For BadUSB implementation, we found guide\footnote{<https://null-byte.wonderhowto.com/how-to/make-your-own-bad-usb-0165419/>}
-in which \textit{8 GB Toshiba TransMemory-MX USB 3.0} is used.
-It has the *Phison 2303 (2251-03)* USB controller, we have not found it yet,
-but the searching are being going
-- *UMFT601X-B*
-- We found that our own Arduino board may be used as programmable USB device.
-We are exploring this possibility
-- According to advice from Victor Osmov, the easiest way to make simple BadUSB is
-to combine keyboard controller with USB controller and additionally patch them.
-If current approach does not work, we will try this way also
-
-# Appendix B. CCF Research Project
-
-## Team members
-
-## Goals & Targets
-
-## Team collaboration & members contribution
-
-## Time Schedule
-
-## Resource requirements
-
-# Appendix C. Report writing snippets
-
-```markdown
-[[1, 2008]](https://www.usenix.org/legacy/event/sec08/tech/full_papers/halderman/halderman.pdf)
-
-[[2, 20010]](https://freddie.witherden.org/pages/ieee-1394-forensics.pdf)
-```
+3. TODO: add more, request for help
+-->

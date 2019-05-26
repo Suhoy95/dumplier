@@ -15,7 +15,7 @@ cat <<PREAMBLE
 ---
 title: $TITLE
 subtitle: $SUBJECT -- Research Project
-author: Sukhoplyuev I.
+author: Sukhoplyuev Ilya
 rights: Innopolis University, Security and Networking Engineering
 date: $(date +%Y-%m-%d)
 documentclass: book

@@ -8,7 +8,7 @@ TARGET := $(TARGET_FILENAME).pdf
 
 all: $(TARGET)
 
-%.pdf: $(wildcard *.md)
+%.pdf: README.md
 	# More quotes! Welcome to shell-family
 	./scripts/preamble.sh "$(TITLE)" "$(SUBJECT)" "$(NUMBER)" | cat - $< | pandoc -o "$@" --latex-engine xelatex
 
