@@ -13,6 +13,8 @@ Though by the time of writing the report there is no final practical
 results, we hope this work will become a good theoretical guideline to concentrate
 on particular solutions.
 
+*Notice:* to easy remember the last tasks, they are marked with **TODO:**.
+
 \tableofcontents
 
 # Introduction
@@ -193,12 +195,63 @@ sudo umount /media/mount && sudo umount /media/bitlocker
 
 ## Further VM experiments
 
-- test different types of BitLocker configuration
-- test the `rsakeyfind` utility
+- **TODO:** test different types of BitLocker configuration
+- **TODO:** test the `rsakeyfind` utility
 
 ## Dumping Memory from Hardware
 
+### Target host configuration
 
+- Motherboard: `Gigabyte H110-D3A`
+- PCU: Intel Celeron
+- DRAM: `HyperX Fury DDR4` / `HX424C15FB2K2/16`.
+[spec](https://www.kingston.com/dataSheets/HX424C15FB2K2_16.pdf),
+[product page](https://www.hyperxgaming.com/en/memory/fury-ddr4)
+- Multimeter with temperature sensor
+
+### Preparing scrapper USB
+
+The built 64-bit scrapper from `bios_memimage` sources did not work.
+
+**TODO:** It is hard to accept, but we forgot to try to build 32-bit version.
+
+We found built utilities (`scripts/Scraper_32-bit.zip`). Use `dd` to
+place `scraper.bin` on the zeroed USB stick.
+
+To obtain the dumped memory, you can investigate USB content directly, or
+use `usbdump`-utility to extract RAM to the memory. *Notice:* if the `usbdump`
+from an archive does not work, try to build it from sources.
+
+### Experiment photo
+
+![Host configuration](./images/Hard-1.jpg)
+
+![Put the BIOS into FastBoot setting, which could make BIOS avoid RAM clearing
+during boot](./images/Hard-2.jpg)
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=1\textwidth]{./images/Hard-3.jpg}
+    \caption{Used canned Air obtained from DNS shop}
+\end{figure}
+
+![Example of frozen RAM before cutting power off](./images/Hard-4.jpg)
+
+![Running RAM scrapper to USB stick](./images/Hard-5.jpg)
+
+![Recovering dumped memory to the file with `usbdump` utility](./images/Hard-6.jpg)
+
+\clearpage
+
+![The best result. We found EFI strings in the RAM memory](./images/Hard-7.png)
+
+### Possible fail reasons
+
+- More than 4 GiB. But the `dump.ram` is 7.9 GB
+- Write error in the USB scrapper (look at the photo)
+- Do not believe in binaries from the Internet
+- Bad BIOS/hardware, which corrupts the previous memory state
+- DDR4 degrades too fast
 
 # Building Memory Scrapper
 
