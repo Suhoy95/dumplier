@@ -1142,7 +1142,7 @@ grep found dummy.log
 rm -v dummy.c a.out dummy.log
 ```
 
-## 6.11. Zlib-1.2.11
+### 6.11. Zlib-1.2.11
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/zlib.html>
 
@@ -1159,7 +1159,7 @@ mv -v /usr/lib/libz.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libz.so) /usr/lib/libz.so
 ```
 
-## 6.12. File-5.36
+### 6.12. File-5.36
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/file.html>
 
@@ -1171,7 +1171,7 @@ make check
 make install
 ```
 
-## 6.13. Readline-8.0
+### 6.13. Readline-8.0
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/readline.html>
 
@@ -1197,7 +1197,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libhistory.so ) /usr/lib/libhistory.so
 install -v -m644 doc/*.{ps,pdf,html,dvi} /usr/share/doc/readline-8.0
 ```
 
-## 6.14. M4-1.4.18
+### 6.14. M4-1.4.18
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/m4.html>
 
@@ -1214,7 +1214,7 @@ make check
 make install
 ```
 
-## 6.15. Bc-1.07.1
+### 6.15. Bc-1.07.1
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bc.html>
 
@@ -1248,7 +1248,7 @@ echo "quit" | ./bc/bc -l Test/checklib.b
 make install
 ```
 
-## 6.16. Binutils-2.32
+### 6.16. Binutils-2.32
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/binutils.html>
 
@@ -1272,7 +1272,7 @@ make -k check
 make tooldir=/usr install
 ```
 
-## 6.17. GMP-6.1.2
+### 6.17. GMP-6.1.2
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gmp.html>
 
@@ -1295,7 +1295,7 @@ make install
 make install-html
 ```
 
-## 6.18. MPFR-4.0.2
+### 6.18. MPFR-4.0.2
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/mpfr.html>
 
@@ -1314,7 +1314,7 @@ make install
 make install-html
 ```
 
-## 6.19. MPC-1.1.0
+### 6.19. MPC-1.1.0
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/mpc.html>
 
@@ -1331,7 +1331,7 @@ make install
 make install-html
 ```
 
-## 6.20. Shadow-4.6
+### 6.20. Shadow-4.6
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/shadow.html>
 - **NOTE:** <http://www.linuxfromscratch.org/blfs/view/8.4/postlfs/cracklib.html>
@@ -1362,7 +1362,7 @@ grpconv
 passwd root
 ```
 
-## 6.21. GCC-8.2.0
+### 6.21. GCC-8.2.0
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gcc.html>
 
@@ -1491,7 +1491,7 @@ mkdir -pv /usr/share/gdb/auto-load/usr/lib
 mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
 ```
 
-## 6.22. Bzip2-1.0.6
+### 6.22. Bzip2-1.0.6
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bzip2.html>
 
@@ -1517,7 +1517,7 @@ ln -sv bzip2 /bin/bunzip2
 ln -sv bzip2 /bin/bzcat
 ```
 
-## 6.23. Pkg-config-0.29.2
+### 6.23. Pkg-config-0.29.2
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/pkg-config.html>
 
@@ -1534,7 +1534,7 @@ make check
 make install
 ```
 
-## 6.24. Ncurses-6.1
+### 6.24. Ncurses-6.1
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/ncurses.html>
 
@@ -1567,7 +1567,7 @@ mkdir -v       /usr/share/doc/ncurses-6.1
 cp -v -R doc/* /usr/share/doc/ncurses-6.1
 ```
 
-## 6.25. Attr-2.4.48
+### 6.25. Attr-2.4.48
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/attr.html>
 
@@ -1586,7 +1586,7 @@ mv -v /usr/lib/libattr.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libattr.so) /usr/lib/libattr.so
 ```
 
-## 6.26. Acl-2.2.53
+### 6.26. Acl-2.2.53
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/acl.html>
 
@@ -1605,7 +1605,7 @@ mv -v /usr/lib/libacl.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so
 ```
 
-## 6.27. Libcap-2.26
+### 6.27. Libcap-2.26
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libcap.html>
 
@@ -1621,7 +1621,7 @@ mv -v /usr/lib/libcap.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so
 ```
 
-## 6.28. Sed-4.7
+### 6.28. Sed-4.7
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sed.html>
 
@@ -1641,7 +1641,7 @@ install -d -m755           /usr/share/doc/sed-4.7
 install -m644 doc/sed.html /usr/share/doc/sed-4.7
 ```
 
-## 6.29. Psmisc-23.2
+### 6.29. Psmisc-23.2
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/psmisc.html>
 
@@ -1656,7 +1656,7 @@ mv -v /usr/bin/fuser   /bin
 mv -v /usr/bin/killall /bin
 ```
 
-## 6.30. Iana-Etc-2.30
+### 6.30. Iana-Etc-2.30
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/iana-etc.html>
 
@@ -1666,7 +1666,7 @@ make
 make install
 ```
 
-## 6.31. Bison-3.3.2
+### 6.31. Bison-3.3.2
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bison.html>
 
@@ -1678,7 +1678,7 @@ make
 make install
 ```
 
-## 6.32. Flex-2.6.4
+### 6.32. Flex-2.6.4
 
 - <www.linuxfromscratch.org/lfs/view/stable/chapter06/flex.html>
 
@@ -1697,7 +1697,7 @@ make install
 ln -sv flex /usr/bin/lex
 ```
 
-## 6.33. Grep-3.3
+### 6.33. Grep-3.3
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/grep.html>
 
@@ -1710,7 +1710,7 @@ make -k check
 make install
 ```
 
-## 6.34. Bash-5.0
+### 6.34. Bash-5.0
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bash.html>
 
@@ -1733,7 +1733,7 @@ mv -vf /usr/bin/bash /bin
 exec /bin/bash --login +h
 ```
 
-## 6.35. Libtool-2.4.6
+### 6.35. Libtool-2.4.6
 
 - <www.linuxfromscratch.org/lfs/view/stable/chapter06/libtool.html>
 
@@ -1748,7 +1748,7 @@ make
 make install
 ```
 
-## 6.36. GDBM-1.18.1
+### 6.36. GDBM-1.18.1
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gdbm.html>
 
@@ -1762,7 +1762,7 @@ make check
 make install
 ```
 
-## 6.37. Gperf-3.1
+### 6.37. Gperf-3.1
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gperf.html>
 
@@ -1775,7 +1775,7 @@ make -j1 check
 make install
 ```
 
-## 6.38. Expat-2.2.6
+### 6.38. Expat-2.2.6
 
 - <http://www.linuxfromscratch.org/lfs/view/stable/chapter06/expat.html>
 
