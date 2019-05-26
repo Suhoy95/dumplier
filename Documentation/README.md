@@ -1,41 +1,17 @@
 # Preface
 
-\begin{flushleft}
-\textbf{Q:} \textit{Know what the difference between your latest project and
-putting wings on an elephant is?}\linebreak
-\textbf{A:} \textit{Who knows? The elephant *might* fly, heh, heh...}\linebreak
-\end{flushleft}
-\begin{flushright}
-\textit{\textbf{Author unknown, future's quotes}}
-\end{flushright}
+**Q:** *Know what the difference between your latest project and
+putting wings on an elephant is?*\
+**A:** *Who knows? The elephant \*might\* fly, heh, heh...*\
+*Author unknown, future's quotes*
 
-This paper is work-in-progress draft of two research projects: \textit{Offensive
-Technology (OT)} and \textit{Cyber Crime And Forensics (CCF)} subjects from
-Security and Network Engineering (SNE) master program in the Innopolis University
-[[os3.su]](http://os3.su/).
-
-The first one, CCF, appears thanks for inspiration from Halderman work
-[[1, 2008]](https://www.usenix.org/legacy/event/sec08/tech/full_papers/halderman/halderman.pdf)
-and its uncovering the conception that RAM is not so volatility as it has been
-supposed to be by plenty of regular engineers and security researchers, which still
-makes questions about current critical security methods and also gives a way
-to more quality data acquisition in forensic science point of view.
-
-The second, OT, called "USB & DMA Threats" was chosen tightly coupled with
-the first topic to deeply concentrate on data acquisition. Indeed, the Witherden
-work [[2, 20010]](https://freddie.witherden.org/pages/ieee-1394-forensics.pdf)
-dedicated RAM acquisition via FireWire Interface mostly shows not a IEEE 1379/FireWire
-flaws, but the wide theoretical and practical consideration about data extraction
-from running machine.
-
-The current draft is dedicated to manage logs of both researches, during which
-we are targeting not only on performing the defined topics, but consider these
-method of data acquisitions more structured, and also validation of implemented
-methods at current time.
-
-We hope that this work become good theoretical and practical basis for
-understanding deeper data acquisition and/or creating new high-level forensics
-products and busyness.
+This is a report for CCF research project. The research was dedicated to
+practical reproducing the results of
+[Lest We Remember (2008)](https://citp.princeton.edu/research/memory/) work.
+The interest was to create own live RAM content acquisition method.
+Though by the time of writing the report there is no final practical
+results, we hope this work will become a good theoretical guideline to concentrate
+on particular solutions.
 
 \tableofcontents
 
