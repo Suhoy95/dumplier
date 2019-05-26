@@ -15,24 +15,24 @@
 
 *This is the **system GCC** from system repository*
 
-*This is the buggy **first GCC***
+*This is the buggy **first GCC***\
 *Which is built by the **system GCC** from system repository*
 
-*This is the **second GCC***
-*Which is built by the buggy **first GCC***
+*This is the **second GCC***\
+*Which is built by the buggy **first GCC***\
 *Which is built by the **system GCC** from system repository*
 
-*This is the **target GCC***
-*[Which should be equal to And]*
-*Which is built by the not-so-buggy **second GCC***
-*Which is built by the buggy **first GCC***
+*This is the **target GCC***\
+*[Which should be equal to And]*\
+*Which is built by the not-so-buggy **second GCC***\
+*Which is built by the buggy **first GCC***\
 *Which is built by the **system GCC** from system repository*
 
-*This is the **Cross-Compiler GCC***
-*Which is built by the **target GCC***
-*[Which should be equal to And]*
-*Which is built by the not-so-buggy **second GCC***
-*Which is built by the buggy **first GCC***
+*This is the **Cross-Compiler GCC***\
+*Which is built by the **target GCC***\
+*[Which should be equal to And]*\
+*Which is built by the not-so-buggy **second GCC***\
+*Which is built by the buggy **first GCC***\
 *Which is built by the **system GCC** from system repository*
 
 ## Dependencies
